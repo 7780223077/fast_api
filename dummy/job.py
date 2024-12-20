@@ -17,3 +17,7 @@ class Job:
         db_job: Job = cls.find_by_id()
         description: str = db_job.description if db_job else None
         return description
+    
+    def get_by_name(cls, session: Session, name: str):
+        db_job = session.query(cls).filter_by(cls.name == name).first()
+        return Job
