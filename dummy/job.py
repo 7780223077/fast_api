@@ -18,6 +18,12 @@ class Job:
         description: str = db_job.description if db_job else None
         return description
     
+    @classmethod
     def get_by_name(cls, session: Session, name: str):
         db_job = session.query(cls).filter_by(cls.name == name).first()
-        return Job
+        return db_job
+    
+    @classmethod
+    def get_by_recuiter_id(cls, session: Session, recuiter_id: str):
+        db_job = session.query(cls).filter_by(cls.recuiter_id == recuiter_id).first()
+        return db_job
