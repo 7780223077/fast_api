@@ -31,3 +31,6 @@ async def get_user_details(session: Session = Depends(get_db), current_user: Use
 async def get_user_by_id(id: int, session: Session= Depends(get_db)):
     user = session.query(User).filter(User.id == id).first()
     return user
+
+def root():
+    return "hello world"
